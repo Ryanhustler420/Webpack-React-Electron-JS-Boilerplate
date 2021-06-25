@@ -1,3 +1,14 @@
+```cmd
+
+> git clone https://github.com/Ryanhustler420/Webpack-React-Electron-JS-Boilerplate.git
+> cd ./Webpack-React-Electron-JS-Boilerplate
+> npm install
+> npm run watch
+> npm start
+
+```
+
+
 # Boilerplate
 
 > npm install --save-dev webpack-merge
