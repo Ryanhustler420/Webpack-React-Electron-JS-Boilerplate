@@ -8,6 +8,10 @@
 
 ```
 
+You need to create these file/folder on root level of this project
+
+- .env
+- assets/images
 
 # Boilerplate
 
