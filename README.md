@@ -8,10 +8,12 @@
 
 ```
 
-You need to create these file/folder on root level of this project
+You need to create these file/folder on root level of this project (review .gitignore)
 
 - .env
 - assets/images
+- build/js (automatically gets created once you run - npm run watch)
+- node_modules (automatically gets created once you run - npm install)
 
 # Boilerplate
 
