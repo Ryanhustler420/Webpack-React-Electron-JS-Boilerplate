@@ -15,6 +15,21 @@ You need to create these file/folder on root level of this project (review .giti
 - build/js (automatically gets created once you run - npm run watch)
 - node_modules (automatically gets created once you run - npm install)
 
+
+> dependencies you need,
+
+- npm i @popperjs/core (if you want to use bootstrap into react app)
+
+# index.js
+```js
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.min.js';
+
+ReactDOM.render(<App />, document.getElementById('Root'))
+
+```
+
 # Boilerplate
 
 > npm install --save-dev webpack-merge
