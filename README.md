@@ -18,7 +18,9 @@ You need to create these file/folder on root level of this project (review .giti
 
 > dependencies you need,
 
-- npm i @popperjs/core (if you want to use bootstrap into react app)
+- npm i --save @popperjs/core (if you want to use bootstrap into react app)
+
+- Please remove .git which is hidden in the directory, and run `git init`
 
 # index.js
 ```js
