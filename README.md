@@ -66,14 +66,14 @@ exploits, like code injection, dynamically linked library (DLL) hijacking
 It enforces code signing and verifies downloaded applications before allowing them to run, thereby reducing the likelihood of inadvertently executing malware.
 
 ``
-> npm run make:win
+>> npm run make:win
 
 ##### OR (Recommended) [12.10.1 >= node version]
 
-> npm install -g electron-packager
-> electron-packager --help
-> electron-packager --version
-> electron-packager . --electron-version="13.1.2" --asar=true
+- npm install -g electron-packager
+- electron-packager --help
+- electron-packager --version
+- electron-packager . --electron-version="13.1.2" --asar=true
 
 >> Make sure you execute the above command while you are in the root level of the project
 
