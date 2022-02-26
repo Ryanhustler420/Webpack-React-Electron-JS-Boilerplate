@@ -4,7 +4,7 @@ import { withBaseLayout } from '../hocs/BaseLayout';
 function Temp() {
     return (
         <>
-            <h1>Temporory Component</h1>
+            <h1>Hi, There!</h1>
         </>
     );
 }

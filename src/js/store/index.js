@@ -1,16 +1,18 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { TYPES } from '../actions/types';
-import thunkMiddleware from 'redux-thunk'
+import thunkMiddleware from 'redux-thunk';
+import promiseMiddleware from 'redux-promise';
 import _ from 'lodash';
 
 // Reducers
 import authReducer from '../reducers/auth-reducers'
-import settingReducer from '../reducers/settings-reducers';
+import settingReducer from '../reducers/settings-reducers'
 import connectionReducer from '../reducers/connection-reducers'
 
 // Middlewares
 import connectionMiddleware from './middlewares/connection-middleware'
 import settingMiddleware from './middlewares/setting-middleware'
+import axiosInterceptorMiddleware from './middlewares/axios-middleware'
 import authMiddleware from './middlewares/auth-middleware'
 
 // We store all the data to this store,
@@ -21,6 +23,8 @@ export default function configureStore() {
 
     const middlewares = [
         thunkMiddleware,
+        promiseMiddleware,
+        axiosInterceptorMiddleware,
 
         authMiddleware,
         settingMiddleware,
@@ -34,9 +38,9 @@ export default function configureStore() {
     });
 
     const filteredReducer = (state, action) => {
-        if (action.type === TYPES.AUTH_LOGOUT_SUCCESS) {
+        if (action?.type === TYPES.RESET_ALL_STATES) {
             _.keys(state).forEach(saveableKey => {
-                if (state[saveableKey]) {
+                if (state[saveableKey]?.saveable) {
                     return; // do nothing
                 }
                 state[saveableKey] = undefined;
