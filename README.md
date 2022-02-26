@@ -8,7 +8,7 @@
 
 ```
 
-You need to create these file/folder on root level of this project (review .gitignore)
+You need to have these file/folder on root level of this project (review .gitignore)
 
 - .env
 - assets/images
@@ -29,6 +29,31 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js';
 
 ReactDOM.render(<App />, document.getElementById('Root'))
+
+```
+
+# electron-builder.yml
+
+```.yml
+appId: com.domain.appname # com.example.ElectronAutoUpdate
+publish:
+  provider: github
+  token: "YOUR GITHUB ACCESS TOKEN" # you can also set GH_TOKEN on your env variable of your machine, also restart ide, tty, https://github.com/iffy/electron-updater-example
+```
+
+> .env file snap
+
+```.env
+
+AppNameCookieName=Oll_token
+AppNameAccessPlatformName=somethingHereAsWell
+AppNameRouteCallerAppName=appNameHereAsWell
+AppNameAppVersion=appVersionAsWell
+
+STRIPE_PROD_PK=pk_live_jibresh
+STRIPE_TEST_PK=pk_test_jibresh
+
+GITHUB_ACCESS_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxxx
 
 ```
 
@@ -82,3 +107,17 @@ It enforces code signing and verifies downloaded applications before allowing th
 > (Menu)[https://github.com/electron/electron/issues/2591]
 
 > (Installer)[https://ourcodeworld.com/articles/read/927/how-to-create-a-msi-installer-in-windows-for-an-electron-framework-application]
+
+##### Instructions
+
+- Starts with `npm run build`
+
+- First do `npm run make:win` || (you can run the `makewin` command which will fire the batch file) and install locally to test on local machine
+- If thing went right then second do `npm run deploy:win` and check on github
+- Go to github /owner/repository/release and publist the package via edit button
+- attach plugins binaries, pdf with that release (optional)
+- publish
+
+# Commands
+- npm start
+- npm run watch (Electron)

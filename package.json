@@ -4,30 +4,50 @@
   "description": "Reach and electron boilerplate",
   "main": "main.js",
   "scripts": {
+    "test": "jest",
     "start": "electron .",
     "watch": "webpack --config webpack.common.js --watch",
     "dev": "SET NODE_ENV=development&&concurrently \"npm start\" \"npm run watch\"",
     "build": "webpack --config webpack.prod.js",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
-    "make:linux": "electron-builder --linux",
-    "make:macos": "electron-builder --mac",
-    "make:win": "electron-builder --win --x64"
+    "make:linux": "electron-builder --linux --publish never",
+    "make:macos": "electron-builder --mac --publish never",
+    "make:win": "electron-builder --win --x64 --publish never",
+    "deploy:linux": "electron-builder --linux --publish always",
+    "deploy:macos": "electron-builder --mac --publish always",
+    "deploy:win": "electron-builder --win --x64 --publish always"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/owner/repository.git"
   },
   "author": "Gaurav Gupta",
-  "license": "ISC",
   "build": {
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "Owner",
+        "repo": "RepositoryAppName",
+        "token": "$GITHUB_ACCESS_TOKEN$",
+        "private": true
+      }
+    ],
     "productName": "Your application name",
     "appId": "com.domain.appname",
     "files": [
+      "__tests__/**/*",
+      "utils/**/*",
       "build/**/*",
       "assets/**/*",
-      "utils/*/**",
       "index.html",
       "splash.css",
       "splash.html",
       "main.js",
-      "preload.js"
+      "preload.js",
+      "FileIO.js",
+      "listeners.js",
+      ".env"
     ],
     "mac": {
       "category": "public.app-category.developer-tools",
@@ -50,7 +70,7 @@
       ]
     },
     "win": {
-      "icon": "assets/images/logo.png",
+      "icon": "assets/images/trash.png",
       "target": [
         "nsis"
       ]
@@ -65,35 +85,61 @@
     }
   },
   "devDependencies": {
+    "copy-webpack-plugin": "^9.0.1",
     "dotenv-webpack": "^7.0.3",
-    "electron": "^13.1.2",
+    "electron": "^13.1.5",
     "electron-builder": "^22.11.7",
+    "electron-rebuild": "^3.2.7",
     "electron-reload": "^1.5.0",
+    "jest": "^27.0.6",
+    "spectron": "^15.0.0",
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.5",
     "@babel/preset-react": "^7.14.5",
+    "@hookform/resolvers": "^2.6.0",
+    "@popperjs/core": "^2.9.2",
     "@reduxjs/toolkit": "^1.6.0",
+    "@stripe/react-stripe-js": "^1.4.1",
+    "@stripe/stripe-js": "^1.16.0",
+    "axios": "^0.21.1",
     "babel-loader": "^8.2.2",
-    "bootstrap": "^4.5.0",
+    "bootstrap": "^5.0.2",
+    "bson": "^4.3.0",
     "concurrently": "^6.2.0",
     "css-loader": "^5.2.6",
+    "dotenv": "^8.6.0",
+    "electron-updater": "^4.3.9",
     "firebase": "^8.6.8",
+    "form-data": "^2.3.3",
+    "joi": "^17.4.0",
+    "js-base64": "^3.6.1",
     "lodash": "^4.17.21",
-    "moment": "^2.29.1",
+    "luxon": "^1.28.0",
+    "mkdirp": "^1.0.4",
+    "pluralize": "^7.0.0",
     "react": "^17.0.2",
+    "react-datepicker": "^4.1.1",
     "react-dom": "^17.0.2",
+    "react-file-drop": "^3.1.2",
     "react-hook-form": "^7.9.0",
+    "react-lazy-load-image-component": "^1.5.1",
+    "react-loading-skeleton": "^2.2.0",
+    "react-phone-number-input": "^3.1.23",
+    "react-pure-modal": "^2.1.0",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
+    "react-toastify": "^7.0.4",
     "redux": "^4.1.0",
+    "redux-promise": "^0.6.0",
     "redux-thunk": "^2.3.0",
     "sass": "^1.35.1",
     "sass-loader": "^12.1.0",
     "style-loader": "^2.0.0",
     "webpack": "^5.39.1",
-    "webpack-cli": "^4.7.2"
+    "webpack-cli": "^4.7.2",
+    "yargs": "^16.2.0"
   }
 }
